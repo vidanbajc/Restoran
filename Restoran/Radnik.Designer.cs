@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cb_naziv_priloga = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -51,6 +50,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gridview_prilozi = new System.Windows.Forms.DataGridView();
             this.gridview_jela = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btn_sacuvaj_racun = new System.Windows.Forms.Button();
             this.btn_obrisi_stavku = new System.Windows.Forms.Button();
             this.btn_izmeni_stavku = new System.Windows.Forms.Button();
@@ -59,15 +59,17 @@
             this.gridview_stavke_racuna = new System.Windows.Forms.DataGridView();
             this.gridview_racuni = new System.Windows.Forms.DataGridView();
             this.btn_dodaj_stavku = new System.Windows.Forms.Button();
+            this.lbl_od = new System.Windows.Forms.Label();
+            this.lbl_do = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_prilozi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_jela)).BeginInit();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_stavke_racuna)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_racuni)).BeginInit();
             this.SuspendLayout();
@@ -80,7 +82,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(738, 435);
+            this.tabControl1.Size = new System.Drawing.Size(738, 448);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -96,28 +98,10 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(730, 409);
+            this.tabPage1.Size = new System.Drawing.Size(730, 422);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Jela i Prilozi";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.btn_sacuvaj_racun);
-            this.tabPage2.Controls.Add(this.btn_obrisi_stavku);
-            this.tabPage2.Controls.Add(this.btn_izmeni_stavku);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.gridview_stavke_racuna);
-            this.tabPage2.Controls.Add(this.gridview_racuni);
-            this.tabPage2.Controls.Add(this.btn_dodaj_stavku);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(730, 409);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Racuni";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -126,7 +110,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(156, 201);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(158, 94);
+            this.groupBox4.Size = new System.Drawing.Size(156, 94);
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Filtriraj po Prilogu";
@@ -152,17 +136,18 @@
             // btn_filtriraj
             // 
             this.btn_filtriraj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_filtriraj.Location = new System.Drawing.Point(162, 305);
+            this.btn_filtriraj.Location = new System.Drawing.Point(171, 319);
             this.btn_filtriraj.Name = "btn_filtriraj";
             this.btn_filtriraj.Size = new System.Drawing.Size(114, 38);
             this.btn_filtriraj.TabIndex = 15;
             this.btn_filtriraj.Text = "Filtriraj";
             this.btn_filtriraj.UseVisualStyleBackColor = true;
+            this.btn_filtriraj.Click += new System.EventHandler(this.btn_filtriraj_Click);
             // 
             // btn_novi_racun
             // 
             this.btn_novi_racun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_novi_racun.Location = new System.Drawing.Point(162, 353);
+            this.btn_novi_racun.Location = new System.Drawing.Point(171, 363);
             this.btn_novi_racun.Name = "btn_novi_racun";
             this.btn_novi_racun.Size = new System.Drawing.Size(114, 38);
             this.btn_novi_racun.TabIndex = 16;
@@ -171,6 +156,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lbl_do);
+            this.groupBox3.Controls.Add(this.lbl_od);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.trackBar2);
             this.groupBox3.Controls.Add(this.label6);
@@ -180,7 +167,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(8, 201);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(142, 200);
+            this.groupBox3.Size = new System.Drawing.Size(142, 213);
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Filtriraj po Jelu";
@@ -189,7 +176,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(6, 126);
+            this.label7.Location = new System.Drawing.Point(6, 143);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 16);
             this.label7.TabIndex = 7;
@@ -198,13 +185,14 @@
             // trackBar2
             // 
             this.trackBar2.LargeChange = 100;
-            this.trackBar2.Location = new System.Drawing.Point(0, 145);
-            this.trackBar2.Maximum = 10000;
+            this.trackBar2.Location = new System.Drawing.Point(3, 162);
+            this.trackBar2.Maximum = 5000;
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.Size = new System.Drawing.Size(129, 45);
             this.trackBar2.SmallChange = 10;
             this.trackBar2.TabIndex = 6;
             this.trackBar2.TickFrequency = 100;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
             // label6
             // 
@@ -220,12 +208,13 @@
             // 
             this.trackBar1.LargeChange = 100;
             this.trackBar1.Location = new System.Drawing.Point(0, 97);
-            this.trackBar1.Maximum = 10000;
+            this.trackBar1.Maximum = 5000;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(129, 45);
             this.trackBar1.SmallChange = 10;
             this.trackBar1.TabIndex = 4;
             this.trackBar1.TickFrequency = 100;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // cb_naziv_jela
             // 
@@ -268,14 +257,14 @@
             // gridview_prilozi
             // 
             this.gridview_prilozi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridview_prilozi.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridview_prilozi.DefaultCellStyle = dataGridViewCellStyle17;
             this.gridview_prilozi.Location = new System.Drawing.Point(367, 25);
             this.gridview_prilozi.Name = "gridview_prilozi";
             this.gridview_prilozi.Size = new System.Drawing.Size(350, 150);
@@ -284,18 +273,36 @@
             // gridview_jela
             // 
             this.gridview_jela.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridview_jela.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridview_jela.DefaultCellStyle = dataGridViewCellStyle18;
             this.gridview_jela.Location = new System.Drawing.Point(8, 25);
             this.gridview_jela.Name = "gridview_jela";
             this.gridview_jela.Size = new System.Drawing.Size(350, 150);
             this.gridview_jela.TabIndex = 10;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.btn_sacuvaj_racun);
+            this.tabPage2.Controls.Add(this.btn_obrisi_stavku);
+            this.tabPage2.Controls.Add(this.btn_izmeni_stavku);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.gridview_stavke_racuna);
+            this.tabPage2.Controls.Add(this.gridview_racuni);
+            this.tabPage2.Controls.Add(this.btn_dodaj_stavku);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(730, 409);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Racuni";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btn_sacuvaj_racun
             // 
@@ -350,14 +357,14 @@
             // gridview_stavke_racuna
             // 
             this.gridview_stavke_racuna.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridview_stavke_racuna.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridview_stavke_racuna.DefaultCellStyle = dataGridViewCellStyle19;
             this.gridview_stavke_racuna.Location = new System.Drawing.Point(367, 25);
             this.gridview_stavke_racuna.Name = "gridview_stavke_racuna";
             this.gridview_stavke_racuna.Size = new System.Drawing.Size(350, 150);
@@ -366,14 +373,14 @@
             // gridview_racuni
             // 
             this.gridview_racuni.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridview_racuni.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridview_racuni.DefaultCellStyle = dataGridViewCellStyle20;
             this.gridview_racuni.Location = new System.Drawing.Point(8, 25);
             this.gridview_racuni.Name = "gridview_racuni";
             this.gridview_racuni.Size = new System.Drawing.Size(350, 150);
@@ -389,19 +396,37 @@
             this.btn_dodaj_stavku.Text = "Dodaj stavku";
             this.btn_dodaj_stavku.UseVisualStyleBackColor = true;
             // 
-            // Radnik2
+            // lbl_od
+            // 
+            this.lbl_od.AutoSize = true;
+            this.lbl_od.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_od.Location = new System.Drawing.Point(63, 78);
+            this.lbl_od.Name = "lbl_od";
+            this.lbl_od.Size = new System.Drawing.Size(14, 15);
+            this.lbl_od.TabIndex = 18;
+            this.lbl_od.Text = "0";
+            // 
+            // lbl_do
+            // 
+            this.lbl_do.AutoSize = true;
+            this.lbl_do.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_do.Location = new System.Drawing.Point(63, 143);
+            this.lbl_do.Name = "lbl_do";
+            this.lbl_do.Size = new System.Drawing.Size(14, 15);
+            this.lbl_do.TabIndex = 19;
+            this.lbl_do.Text = "0";
+            // 
+            // Radnik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(738, 435);
+            this.ClientSize = new System.Drawing.Size(738, 448);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Radnik2";
-            this.Text = "Radnik2";
+            this.Name = "Radnik";
+            this.Text = "Radnik";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -410,6 +435,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_prilozi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_jela)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_stavke_racuna)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_racuni)).EndInit();
             this.ResumeLayout(false);
@@ -445,5 +472,7 @@
         private System.Windows.Forms.DataGridView gridview_stavke_racuna;
         private System.Windows.Forms.DataGridView gridview_racuni;
         private System.Windows.Forms.Button btn_dodaj_stavku;
+        private System.Windows.Forms.Label lbl_do;
+        private System.Windows.Forms.Label lbl_od;
     }
 }

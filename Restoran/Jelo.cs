@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restoran
 {
-    class Jelo
+    public class Jelo
     {
         private int id_jelo;
         private string naziv;

@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Bajc\\Desktop\\Restoran\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|c:\\users\\bajc\\desktop\\restoran\\restoran\\podaci.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|solutionrelative:restoran\\podaci.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|c:\\users\\bajc\\desktop\\restoran\\restoran\\radnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|solutionrelative:restoran\\radnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|c:\\users\\bajc\\desktop\\restoran\\restoran\\radnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|C:\\Users\\Bajc\\Desktop\\Restoran\\restoran\\radnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|solutionrelative:restoran\\radnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|c:\\users\\bajc\\desktop\\restoran\\restoran\\podaci.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|solutionrelative:restoran\\podaci.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,44 +22,44 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Podaci.cs",
               "DocumentMoniker": "C:\\Users\\Bajc\\Desktop\\Restoran\\Restoran\\Podaci.cs",
               "RelativeDocumentMoniker": "Restoran\\Podaci.cs",
               "ToolTip": "C:\\Users\\Bajc\\Desktop\\Restoran\\Restoran\\Podaci.cs",
               "RelativeToolTip": "Restoran\\Podaci.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-06T10:18:48.073Z",
+              "WhenOpened": "2026-06-07T07:14:54.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Radnik.cs",
+              "DocumentMoniker": "C:\\Users\\Bajc\\Desktop\\Restoran\\Restoran\\Radnik.cs",
+              "RelativeDocumentMoniker": "Restoran\\Radnik.cs",
+              "ToolTip": "C:\\Users\\Bajc\\Desktop\\Restoran\\Restoran\\Radnik.cs*",
+              "RelativeToolTip": "Restoran\\Radnik.cs*",
+              "ViewState": "AgIAAEIAAAAAAAAAAIAwwFcAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-07T07:27:49.344Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Radnik.cs",
-              "DocumentMoniker": "C:\\Users\\Bajc\\Desktop\\Restoran\\Restoran\\Radnik.cs",
-              "RelativeDocumentMoniker": "Restoran\\Radnik.cs",
-              "ToolTip": "C:\\Users\\Bajc\\Desktop\\Restoran\\Restoran\\Radnik.cs",
-              "RelativeToolTip": "Restoran\\Radnik.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-06T10:14:57.072Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Radnik.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Bajc\\Desktop\\Restoran\\Restoran\\Radnik.cs",
               "RelativeDocumentMoniker": "Restoran\\Radnik.cs",
-              "ToolTip": "C:\\Users\\Bajc\\Desktop\\Restoran\\Restoran\\Radnik.cs [Design]",
-              "RelativeToolTip": "Restoran\\Radnik.cs [Design]",
+              "ToolTip": "C:\\Users\\Bajc\\Desktop\\Restoran\\Restoran\\Radnik.cs [Design]*",
+              "RelativeToolTip": "Restoran\\Radnik.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-06T08:26:40.482Z",
+              "WhenOpened": "2026-06-06T10:37:25.104Z",
               "EditorCaption": " [Design]"
             }
           ]

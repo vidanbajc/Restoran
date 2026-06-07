@@ -2,7 +2,6 @@ C:\Users\Bajc\Desktop\Restoran\Restoran\bin\Debug\Restoran.exe.config
 C:\Users\Bajc\Desktop\Restoran\Restoran\bin\Debug\Restoran.exe
 C:\Users\Bajc\Desktop\Restoran\Restoran\bin\Debug\Restoran.pdb
 C:\Users\Bajc\Desktop\Restoran\Restoran\obj\Debug\Restoran.csproj.AssemblyReference.cache
-C:\Users\Bajc\Desktop\Restoran\Restoran\obj\Debug\Restoran.Form1.resources
 C:\Users\Bajc\Desktop\Restoran\Restoran\obj\Debug\Restoran.Properties.Resources.resources
 C:\Users\Bajc\Desktop\Restoran\Restoran\obj\Debug\Restoran.csproj.GenerateResource.cache
 C:\Users\Bajc\Desktop\Restoran\Restoran\obj\Debug\Restoran.csproj.CoreCompileInputs.cache
@@ -11,3 +10,4 @@ C:\Users\Bajc\Desktop\Restoran\Restoran\obj\Debug\Restoran.pdb
 C:\Users\Bajc\Desktop\Restoran\Restoran\obj\Debug\Restoran.Administrator.resources
 C:\Users\Bajc\Desktop\Restoran\Restoran\obj\Debug\Restoran.Radnik.resources
 C:\Users\Bajc\Desktop\Restoran\Restoran\obj\Debug\Restoran.exe.config
+C:\Users\Bajc\Desktop\Restoran\Restoran\obj\Debug\Restoran.Pocetna.resources

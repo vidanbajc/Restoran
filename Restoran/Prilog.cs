@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restoran
 {
-    class Prilog
+    public class Prilog
     {
         private int id_prilog;
         private string naziv;

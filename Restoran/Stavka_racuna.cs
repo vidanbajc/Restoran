@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restoran
 {
-    class Stavka_racuna
+    public class Stavka_racuna
     {
         private int id_racuna;
         private int id_jelo;

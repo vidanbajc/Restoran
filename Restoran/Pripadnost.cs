@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restoran
 {
-    class Pripadnost
+    public class Pripadnost
     {
         private int id_jelo;
         private int id_prilog;

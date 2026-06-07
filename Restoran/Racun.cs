@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restoran
 {
-    class Racun
+    public class Racun
     {
         private int id_racuna;
         private double ukupna_cena;
