@@ -46,7 +46,6 @@ namespace Restoran
                     dt.AsEnumerable()
                         .Select(a => a[atribut].ToString())
                         .ToArray());
-                        
             }
         }
     }

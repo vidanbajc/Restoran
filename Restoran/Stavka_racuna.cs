@@ -15,6 +15,14 @@ namespace Restoran
         private double cenaPrilog;
 
         public Stavka_racuna() { }
+        public Stavka_racuna(int id_jelo, int id_prilog, double cenaJelo, double cenaPrilog)
+        {
+            this.id_jelo = id_jelo;
+            this.id_prilog = id_prilog;
+            this.cenaJelo = cenaJelo;
+            this.cenaPrilog = cenaPrilog;
+        }
+
         public Stavka_racuna(int id_racuna, int id_jelo, int id_prilog, double cenaJelo, double cenaPrilog)
         {
             this.id_racuna = id_racuna;

@@ -13,9 +13,8 @@ namespace Restoran
         private double cena;
 
         public Prilog() { }
-        public Prilog(int id_prilog, string naziv, double cena)
+        public Prilog(string naziv, double cena)
         {
-            this.id_prilog = id_prilog;
             this.naziv = naziv;
             this.cena = cena;
         }

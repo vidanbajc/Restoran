@@ -13,9 +13,8 @@ namespace Restoran
         private double cena;
 
         public Jelo() { }
-        public Jelo(int id_jelo, string naziv, double cena)
+        public Jelo(string naziv, double cena)
         {
-            this.id_jelo = id_jelo;
             this.naziv = naziv;
             this.cena = cena;
         }

@@ -12,9 +12,8 @@ namespace Restoran
         private double ukupna_cena;
 
         public Racun() { }
-        public Racun(int id_racuna, double ukupna_cena)
+        public Racun(double ukupna_cena)
         {
-            this.id_racuna = id_racuna;
             this.ukupna_cena = ukupna_cena;
         }
 

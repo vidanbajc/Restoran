@@ -56,11 +56,11 @@ namespace Restoran
 
             if(korisnik.uloga == "admin")
             {
-                // probati sa korisnik
                 MessageBox.Show($"Uspesno ste se ulogovali kao {korisnik.uloga} {korisnicko_ime}!", "Dobrodosli", MessageBoxButtons.OK);
 
                 Administrator admin = new Administrator();
-                admin.Show();
+                this.Hide();
+                admin.ShowDialog();
             }
 
             else
@@ -68,11 +68,12 @@ namespace Restoran
                 MessageBox.Show($"Uspesno ste se ulogovali kao {korisnik.uloga} {korisnicko_ime}!", "Dobrodosli", MessageBoxButtons.OK);
 
                 Radnik radnik = new Radnik();
-                radnik.Show();
+                this.Hide();
+                radnik.ShowDialog();
             }
 
             OcistiKontrole(this);
-            this.Hide();
+            this.Show();
         }
 
         private void btn_izadji_Click(object sender, EventArgs e)
