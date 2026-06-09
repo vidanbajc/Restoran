@@ -13,23 +13,16 @@ namespace Restoran
         private int id_prilog;
         private double cenaJelo;
         private double cenaPrilog;
+        private int kolicina;
 
         public Stavka_racuna() { }
-        public Stavka_racuna(int id_jelo, int id_prilog, double cenaJelo, double cenaPrilog)
+        public Stavka_racuna(int id_jelo, int id_prilog, double cenaJelo, double cenaPrilog, int kolicina)
         {
             this.id_jelo = id_jelo;
             this.id_prilog = id_prilog;
             this.cenaJelo = cenaJelo;
             this.cenaPrilog = cenaPrilog;
-        }
-
-        public Stavka_racuna(int id_racuna, int id_jelo, int id_prilog, double cenaJelo, double cenaPrilog)
-        {
-            this.id_racuna = id_racuna;
-            this.id_jelo = id_jelo;
-            this.id_prilog = id_prilog;
-            this.cenaJelo = cenaJelo;
-            this.cenaPrilog = cenaPrilog;
+            this.kolicina = kolicina;
         }
 
         public int Id_racuna { get => id_racuna; set => id_racuna = value; }
@@ -37,5 +30,6 @@ namespace Restoran
         public int Id_prilog { get => id_prilog; set => id_prilog = value; }
         public double CenaJelo { get => cenaJelo; set => cenaJelo = value; }
         public double CenaPrilog { get => cenaPrilog; set => cenaPrilog = value; }
+        public int Kolicina { get => kolicina; set => kolicina = value; }
     }
 }

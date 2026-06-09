@@ -13,8 +13,9 @@ namespace Restoran
 {
     public partial class Meni : Form
     {
-        string putanja = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Restoran.accdb;";
+        int ?id_racuna;
         List<Stavka_racuna> lista_stavke_racuna;
+        string putanja = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Restoran.accdb;";
         public Meni()
         {
             InitializeComponent();
@@ -27,6 +28,24 @@ namespace Restoran
             Podaci.PopuniGrid(gridview_prilozi, "Prilog");
             Podaci.PopuniCb(cb_naziv_jela, "Jelo", "naziv");
             Podaci.PopuniCb(cb_naziv_priloga, "Prilog", "naziv");
+
+            cb_naziv_priloga.Enabled = true;
+        }
+
+        public Meni(int id_racuna)
+        {
+            InitializeComponent();
+            this.id_racuna = id_racuna;
+            lista_stavke_racuna = new List<Stavka_racuna>();
+
+            gridview_jela.AutoGenerateColumns = false;
+            gridview_prilozi.AutoGenerateColumns = false;
+
+            Podaci.PopuniGrid(gridview_jela, "Jelo");
+            Podaci.PopuniGrid(gridview_prilozi, "Prilog");
+            Podaci.PopuniCb(cb_naziv_jela, "Jelo", "naziv");
+            Podaci.PopuniCb(cb_naziv_priloga, "Prilog", "naziv");
+            cb_naziv_priloga.Enabled = true;
         }
 
         private void btn_filtriraj_Click(object sender, EventArgs e)
@@ -140,7 +159,23 @@ namespace Restoran
             double.TryParse(red_jelo.Cells[2].Value.ToString(), out double cena_jela);
             double.TryParse(red_prilog.Cells[2].Value.ToString(), out double cena_priloga);
 
-            Stavka_racuna stavka = new Stavka_racuna(id_jela, id_priloga, cena_jela, cena_priloga);
+            Stavka_racuna stavka = new Stavka_racuna(id_jela, id_priloga, cena_jela, cena_priloga, kolicina: 1);
+            Stavka_racuna ista_stavka = null;
+
+            if (lista_stavke_racuna != null)
+            {
+                ista_stavka = lista_stavke_racuna
+                                .FirstOrDefault(s => 
+                                    s.Id_jelo == stavka.Id_jelo &&
+                                    s.Id_prilog == stavka.Id_prilog);
+            }
+
+            if(ista_stavka != null)
+            {
+                ista_stavka.Kolicina++;
+                MessageBox.Show("Uspesno ste dodali stavku!", "Obavestenje", MessageBoxButtons.OK);
+                return;
+            }
 
             lista_stavke_racuna.Add(stavka);
             MessageBox.Show("Uspesno ste dodali stavku!", "Obavestenje", MessageBoxButtons.OK);
@@ -182,22 +217,57 @@ namespace Restoran
 
             string dodaj_racun = $@"insert into Racun (ukupna_cena) values (?)";
             string dodaj_stavku = $@"insert into Stavka_racuna
-                                     (id_racuna, id_jelo, id_prilog, cenaJelo, cenaPrilog)
-                                     values (?, ?, ?, ?, ?)";
+                                     (id_racun, id_jelo, id_prilog, cenaJelo, cenaPrilog, kolicina)
+                                     values (?, ?, ?, ?, ?, ?)";
             double cena = 0;
+
+            lista_stavke_racuna
+                    .ForEach(s => cena += s.Kolicina * (s.CenaJelo + s.CenaPrilog));
 
             using (OleDbConnection konekcija = new OleDbConnection(putanja))
             using (OleDbCommand komanda_dodaj_racun = new OleDbCommand(dodaj_racun, konekcija))
             using (OleDbCommand komanda_dodaj_stavku = new OleDbCommand(dodaj_stavku, konekcija))
             {
-                lista_stavke_racuna.ForEach(s => cena += s.CenaJelo + s.CenaPrilog);
-
                 konekcija.Open();
-                komanda_dodaj_racun.Parameters.AddWithValue("?", cena);
-                komanda_dodaj_racun.ExecuteNonQuery();
+                int id_racuna = 0;
 
-                OleDbCommand komanda_id_racuma = new OleDbCommand("select @@identity", konekcija);
-                int id_racuna = Convert.ToInt32(komanda_id_racuma.ExecuteScalar());
+                if (this.id_racuna.HasValue)
+                {
+                    id_racuna = this.id_racuna.Value;
+
+                    string vrati_cenu =$@"select ukupna_cena
+                                          from Racun
+                                          where id_racun = {id_racuna}";
+
+                    using (OleDbCommand komanda_vrati_cenu =new OleDbCommand(vrati_cenu, konekcija))
+                    {
+                        object rezultat = komanda_vrati_cenu.ExecuteScalar();
+
+                        if (rezultat != null)
+                            cena += Convert.ToDouble(rezultat);
+                    }
+
+                    string azuriraj_racun =$@"update Racun
+                                              set ukupna_cena = ?
+                                              where id_racun = {id_racuna}";
+
+                    using (OleDbCommand komanda_azuriraj = new OleDbCommand(azuriraj_racun, konekcija))
+                    {
+                        komanda_azuriraj.Parameters.AddWithValue("?", cena);
+                        komanda_azuriraj.ExecuteNonQuery();
+                    }
+                }
+
+                else
+                {
+                    komanda_dodaj_racun.Parameters.AddWithValue("?", cena);
+                    komanda_dodaj_racun.ExecuteNonQuery();
+
+                    OleDbCommand komanda_id_racuma = new OleDbCommand("select @@identity", konekcija);
+
+                    id_racuna = Convert.ToInt32(komanda_id_racuma.ExecuteScalar());
+                }
+
 
                 foreach (Stavka_racuna stavka in lista_stavke_racuna)
                 {
@@ -208,6 +278,7 @@ namespace Restoran
                     komanda_dodaj_stavku.Parameters.AddWithValue("?", stavka.Id_prilog);
                     komanda_dodaj_stavku.Parameters.AddWithValue("?", stavka.CenaJelo);
                     komanda_dodaj_stavku.Parameters.AddWithValue("?", stavka.CenaPrilog);
+                    komanda_dodaj_stavku.Parameters.AddWithValue("?", stavka.Kolicina);
 
                     komanda_dodaj_stavku.ExecuteNonQuery();
                 }

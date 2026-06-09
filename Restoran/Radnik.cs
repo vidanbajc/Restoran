@@ -50,6 +50,24 @@ namespace Restoran
             // za za izmeni stavku mora dodatna logika, odnosno slanje id_racuna, id_jela, id_priloga
             // ovde nije ni problem moze "firstordefault"(preko sql) zato sto je to sve jedan racun
             // nije strasno kao za igricee
+
+            if (gridview_racuni.CurrentRow == null || gridview_racuni.CurrentRow.Index == -1)
+            {
+                MessageBox.Show("Morate selektovati racun koje zelite da izmenite!", "Upozorenje", MessageBoxButtons.OK);
+                return;
+            }
+
+            int id_racuna = Convert.ToInt32(gridview_racuni.CurrentRow.Cells[0].Value);
+
+            Meni meni = new Meni(id_racuna);
+            this.Hide();
+            meni.ShowDialog();
+            this.Show();
+
+            gridview_racuni.DataSource = null;
+            gridview_stavke_racuna.DataSource = null;
+            Podaci.PopuniGrid(gridview_racuni, "Racun");
+            Podaci.PopuniGrid(gridview_stavke_racuna, "Stavka_racuna");
         }
     }
 }
