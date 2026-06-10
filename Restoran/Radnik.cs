@@ -78,11 +78,11 @@ namespace Restoran
                 return;
             }
 
-            int.TryParse(gridview_racuni.CurrentRow.Cells[0].Value.ToString(), out int id_racuna);
-            int.TryParse(gridview_stavke_racuna.CurrentRow.Cells[1].Value.ToString(), out int id_jela);
-            int.TryParse(gridview_stavke_racuna.CurrentRow.Cells[2].Value.ToString(), out int id_priloga);
+            int.TryParse(gridview_racuni.CurrentRow.Cells[0].Value.ToString(), out int id_racun);
+            int.TryParse(gridview_stavke_racuna.CurrentRow.Cells[1].Value.ToString(), out int id_jelo);
+            int.TryParse(gridview_stavke_racuna.CurrentRow.Cells[2].Value.ToString(), out int id_prilog);
 
-            Izmeni i = new Izmeni(id_racuna, id_jela, id_priloga);
+            Izmeni i = new Izmeni(id_racun, id_jelo, id_prilog);
             this.Hide();
             i.ShowDialog();
             this.Show();
@@ -114,6 +114,80 @@ namespace Restoran
                 da.Fill(dt);
 
                 gridview_stavke_racuna.DataSource = dt;
+            }
+        }
+
+        private void btn_obrisi_stavku_Click(object sender, EventArgs e)
+        {
+            if (gridview_racuni.CurrentRow == null || gridview_racuni.CurrentRow.Index == -1)
+            {
+                MessageBox.Show("Morate selektovati racun ciju stavku zelite da obrisete!", "Upozorenje", MessageBoxButtons.OK);
+                return;
+            }
+            if (gridview_stavke_racuna.CurrentRow == null || gridview_stavke_racuna.CurrentRow.Index == -1)
+            {
+                MessageBox.Show("Morate selektovati stavku racuna koju zelite da obrisete!", "Upozorenje", MessageBoxButtons.OK);
+                return;
+            }
+
+            int.TryParse(gridview_racuni.CurrentRow.Cells[0].Value.ToString(), out int id_racun);
+            int.TryParse(gridview_stavke_racuna.CurrentRow.Cells[1].Value.ToString(), out int id_jelo);
+            int.TryParse(gridview_stavke_racuna.CurrentRow.Cells[2].Value.ToString(), out int id_prilog);
+
+            DialogResult are_u_sure = MessageBox.Show($"Da li ste sigurni da zelite da obrisete stavku sa racuna {id_racun}", "Upozorenje", MessageBoxButtons.YesNo);
+
+            if (are_u_sure == DialogResult.No)
+                return;
+
+            using (OleDbConnection konekcija = new OleDbConnection(putanja))
+            {
+                konekcija.Open();
+
+                string obrisi_stavku = $@"delete from Stavka_racuna 
+                                          where id_racun  = {id_racun} 
+                                          and id_jelo   = {id_jelo} 
+                                          and id_prilog = {id_prilog}";
+
+                OleDbCommand komanda_obrisi = new OleDbCommand(obrisi_stavku, konekcija);
+                komanda_obrisi.ExecuteNonQuery();
+
+                string ukupna_cena_racuna = $@"select sum(kolicina * (cenaJelo + cenaPrilog)) 
+                                               from Stavka_racuna 
+                                               where id_racun = {id_racun}";
+
+                OleDbCommand komanda_ukupna = new OleDbCommand(ukupna_cena_racuna, konekcija);
+
+                var rezultat = komanda_ukupna.ExecuteScalar();
+                double ukupna_cena = 0;
+
+                if (rezultat != null && rezultat != DBNull.Value)
+                    double.TryParse(rezultat.ToString(), out ukupna_cena);
+
+                string azuriraj_obrisi_racun;
+
+                if (ukupna_cena != 0)
+                {
+                    azuriraj_obrisi_racun = $@"update Racun 
+                                        set ukupna_cena = {ukupna_cena} 
+                                        where id_racun = {id_racun}";
+
+                }
+
+                else
+                {
+                    azuriraj_obrisi_racun = $@"delete from Racun 
+                                        where id_racun = {id_racun}";
+                }
+
+                OleDbCommand komanda_azuriraj = new OleDbCommand(azuriraj_obrisi_racun, konekcija);
+                komanda_azuriraj.ExecuteNonQuery();
+
+                MessageBox.Show("Uspesno ste obrisali stavku!", "Obavestenje", MessageBoxButtons.OK);
+
+                gridview_racuni.DataSource = null;
+                gridview_stavke_racuna.DataSource = null;
+                Podaci.PopuniGrid(gridview_racuni, "Racun");
+                Podaci.PopuniGrid(gridview_stavke_racuna, "Stavka_racuna");
             }
         }
     }

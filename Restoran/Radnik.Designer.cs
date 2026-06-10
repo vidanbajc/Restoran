@@ -61,6 +61,7 @@
             this.btn_obrisi_stavku.TabIndex = 27;
             this.btn_obrisi_stavku.Text = "Obrisi stavku";
             this.btn_obrisi_stavku.UseVisualStyleBackColor = true;
+            this.btn_obrisi_stavku.Click += new System.EventHandler(this.btn_obrisi_stavku_Click);
             // 
             // btn_izmeni_stavku
             // 

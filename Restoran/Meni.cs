@@ -29,8 +29,6 @@ namespace Restoran
             Podaci.PopuniGrid(gridview_prilozi, "Prilog");
             Podaci.PopuniCb(cb_naziv_jela, "Jelo", "naziv");
             Podaci.PopuniCb(cb_naziv_priloga, "Prilog", "naziv");
-
-            cb_naziv_priloga.Enabled = true;
         }
 
         public Meni(int id_racuna)
@@ -46,7 +44,6 @@ namespace Restoran
             Podaci.PopuniGrid(gridview_prilozi, "Prilog");
             Podaci.PopuniCb(cb_naziv_jela, "Jelo", "naziv");
             Podaci.PopuniCb(cb_naziv_priloga, "Prilog", "naziv");
-            cb_naziv_priloga.Enabled = false;
         }
 
         private void btn_filtriraj_Click(object sender, EventArgs e)
@@ -238,7 +235,7 @@ namespace Restoran
 
                     using (OleDbCommand komanda_vrati_cenu = new OleDbCommand(vrati_cenu, konekcija))
                     {
-                        object rezultat = komanda_vrati_cenu.ExecuteScalar();
+                        var rezultat = komanda_vrati_cenu.ExecuteScalar();
 
                         double postojeca_cena = 0;
                         if (rezultat != null)
@@ -284,10 +281,10 @@ namespace Restoran
                             int azurirana_kolicina = postojeca_kolicina + stavka.Kolicina;
 
                             string update_stavku = $@"update Stavka_racuna
-                                              set kolicina = {azurirana_kolicina}
-                                              where id_racun  = {id_racuna}
-                                              and id_jelo   = {stavka.Id_jelo}
-                                              and id_prilog = {stavka.Id_prilog}";
+                                                      set kolicina = {azurirana_kolicina}
+                                                      where id_racun  = {id_racuna}
+                                                      and id_jelo   = {stavka.Id_jelo}
+                                                      and id_prilog = {stavka.Id_prilog}";
 
                             OleDbCommand komanda_update = new OleDbCommand(update_stavku, konekcija);
                             komanda_update.ExecuteNonQuery();
