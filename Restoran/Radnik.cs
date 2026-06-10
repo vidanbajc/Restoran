@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -44,13 +45,6 @@ namespace Restoran
 
         private void btn_dodaj_stavku_Click(object sender, EventArgs e)
         {
-            // videti nekako za slanje id_racuna
-            // takodje prilikom dodavanja ukupne cene nije dovoljno samo citanje iz liste
-            // za ovo dugme dodaj stavku procitamo trenutnu cenu preko ovog poslatog id_racuna
-            // za za izmeni stavku mora dodatna logika, odnosno slanje id_racuna, id_jela, id_priloga
-            // ovde nije ni problem moze "firstordefault"(preko sql) zato sto je to sve jedan racun
-            // nije strasno kao za igricee
-
             if (gridview_racuni.CurrentRow == null || gridview_racuni.CurrentRow.Index == -1)
             {
                 MessageBox.Show("Morate selektovati racun koje zelite da izmenite!", "Upozorenje", MessageBoxButtons.OK);
@@ -68,6 +62,59 @@ namespace Restoran
             gridview_stavke_racuna.DataSource = null;
             Podaci.PopuniGrid(gridview_racuni, "Racun");
             Podaci.PopuniGrid(gridview_stavke_racuna, "Stavka_racuna");
+        }
+
+        private void btn_izmeni_stavku_Click(object sender, EventArgs e)
+        {
+            if (gridview_racuni.CurrentRow == null || gridview_racuni.CurrentRow.Index == -1)
+            {
+                MessageBox.Show("Morate selektovati racun koje zelite da izmenite!", "Upozorenje", MessageBoxButtons.OK);
+                return;
+            }
+
+            if(gridview_stavke_racuna.CurrentRow == null || gridview_stavke_racuna.CurrentRow.Index == -1)
+            {
+                MessageBox.Show("Morate selektovati stavku racuna koju zelite da izmenite!", "Upozorenje", MessageBoxButtons.OK);
+                return;
+            }
+
+            int.TryParse(gridview_racuni.CurrentRow.Cells[0].Value.ToString(), out int id_racuna);
+            int.TryParse(gridview_stavke_racuna.CurrentRow.Cells[1].Value.ToString(), out int id_jela);
+            int.TryParse(gridview_stavke_racuna.CurrentRow.Cells[2].Value.ToString(), out int id_priloga);
+
+            Izmeni i = new Izmeni(id_racuna, id_jela, id_priloga);
+            this.Hide();
+            i.ShowDialog();
+            this.Show();
+
+            gridview_racuni.DataSource = null;
+            gridview_stavke_racuna.DataSource = null;
+            Podaci.PopuniGrid(gridview_racuni, "Racun");
+            Podaci.PopuniGrid(gridview_stavke_racuna, "Stavka_racuna");
+        }
+
+        private void gridview_racuni_SelectionChanged(object sender, EventArgs e)
+        {
+            if (gridview_racuni.CurrentRow == null || gridview_racuni.CurrentRow.Index == -1)
+                return;
+
+            DataGridViewRow red_racun = gridview_racuni.CurrentRow;
+
+            int.TryParse(red_racun.Cells[0].Value.ToString(), out int id_racun);
+
+            string stavke = $@"select *
+                               from Stavka_racuna
+                               where id_racun = {id_racun}";
+
+            using (OleDbConnection konekcija = new OleDbConnection(putanja))
+            using (OleDbCommand komanda_prilozi = new OleDbCommand(stavke, konekcija))
+            {
+                OleDbDataAdapter da = new OleDbDataAdapter(komanda_prilozi);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                gridview_stavke_racuna.DataSource = dt;
+            }
         }
     }
 }

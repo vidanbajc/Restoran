@@ -13,7 +13,8 @@ namespace Restoran
 {
     public partial class Meni : Form
     {
-        int ?id_racuna;
+        int? id_racuna;
+
         List<Stavka_racuna> lista_stavke_racuna;
         string putanja = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Restoran.accdb;";
         public Meni()
@@ -45,7 +46,7 @@ namespace Restoran
             Podaci.PopuniGrid(gridview_prilozi, "Prilog");
             Podaci.PopuniCb(cb_naziv_jela, "Jelo", "naziv");
             Podaci.PopuniCb(cb_naziv_priloga, "Prilog", "naziv");
-            cb_naziv_priloga.Enabled = true;
+            cb_naziv_priloga.Enabled = false;
         }
 
         private void btn_filtriraj_Click(object sender, EventArgs e)
@@ -209,24 +210,20 @@ namespace Restoran
 
         private void btn_sacuvaj_racun_Click(object sender, EventArgs e)
         {
-            if(lista_stavke_racuna == null || lista_stavke_racuna.Count == 0)
+            if (lista_stavke_racuna == null || lista_stavke_racuna.Count == 0)
             {
                 MessageBox.Show("Nije moguce napraviti prazan racun, morate dodati jelo i priloge!", "Upozorenje", MessageBoxButtons.OK);
                 return;
             }
 
             string dodaj_racun = $@"insert into Racun (ukupna_cena) values (?)";
-            string dodaj_stavku = $@"insert into Stavka_racuna
-                                     (id_racun, id_jelo, id_prilog, cenaJelo, cenaPrilog, kolicina)
-                                     values (?, ?, ?, ?, ?, ?)";
             double cena = 0;
-
             lista_stavke_racuna
-                    .ForEach(s => cena += s.Kolicina * (s.CenaJelo + s.CenaPrilog));
+                .ForEach(s => 
+                    cena += s.Kolicina * (s.CenaJelo + s.CenaPrilog));
 
             using (OleDbConnection konekcija = new OleDbConnection(putanja))
             using (OleDbCommand komanda_dodaj_racun = new OleDbCommand(dodaj_racun, konekcija))
-            using (OleDbCommand komanda_dodaj_stavku = new OleDbCommand(dodaj_stavku, konekcija))
             {
                 konekcija.Open();
                 int id_racuna = 0;
@@ -235,21 +232,24 @@ namespace Restoran
                 {
                     id_racuna = this.id_racuna.Value;
 
-                    string vrati_cenu =$@"select ukupna_cena
-                                          from Racun
-                                          where id_racun = {id_racuna}";
+                    string vrati_cenu = $@"select ukupna_cena
+                                           from Racun
+                                           where id_racun = {id_racuna}";
 
-                    using (OleDbCommand komanda_vrati_cenu =new OleDbCommand(vrati_cenu, konekcija))
+                    using (OleDbCommand komanda_vrati_cenu = new OleDbCommand(vrati_cenu, konekcija))
                     {
                         object rezultat = komanda_vrati_cenu.ExecuteScalar();
 
+                        double postojeca_cena = 0;
                         if (rezultat != null)
-                            cena += Convert.ToDouble(rezultat);
+                            double.TryParse(rezultat.ToString(), out postojeca_cena);
+
+                        cena += postojeca_cena;
                     }
 
-                    string azuriraj_racun =$@"update Racun
-                                              set ukupna_cena = ?
-                                              where id_racun = {id_racuna}";
+                    string azuriraj_racun = $@"update Racun
+                                               set ukupna_cena = ?
+                                               where id_racun = {id_racuna}";
 
                     using (OleDbCommand komanda_azuriraj = new OleDbCommand(azuriraj_racun, konekcija))
                     {
@@ -257,30 +257,52 @@ namespace Restoran
                         komanda_azuriraj.ExecuteNonQuery();
                     }
                 }
-
                 else
                 {
                     komanda_dodaj_racun.Parameters.AddWithValue("?", cena);
                     komanda_dodaj_racun.ExecuteNonQuery();
 
-                    OleDbCommand komanda_id_racuma = new OleDbCommand("select @@identity", konekcija);
-
-                    id_racuna = Convert.ToInt32(komanda_id_racuma.ExecuteScalar());
+                    OleDbCommand komanda_id_racuna = new OleDbCommand("select @@identity", konekcija);
+                    id_racuna = Convert.ToInt32(komanda_id_racuna.ExecuteScalar());
                 }
-
 
                 foreach (Stavka_racuna stavka in lista_stavke_racuna)
                 {
-                    komanda_dodaj_stavku.Parameters.Clear();
+                    string proveri_stavku = $@"select kolicina
+                                               from Stavka_racuna
+                                               where id_racun  = {id_racuna}
+                                               and id_jelo   = {stavka.Id_jelo}
+                                               and id_prilog = {stavka.Id_prilog}";
 
-                    komanda_dodaj_stavku.Parameters.AddWithValue("?", id_racuna);
-                    komanda_dodaj_stavku.Parameters.AddWithValue("?", stavka.Id_jelo);
-                    komanda_dodaj_stavku.Parameters.AddWithValue("?", stavka.Id_prilog);
-                    komanda_dodaj_stavku.Parameters.AddWithValue("?", stavka.CenaJelo);
-                    komanda_dodaj_stavku.Parameters.AddWithValue("?", stavka.CenaPrilog);
-                    komanda_dodaj_stavku.Parameters.AddWithValue("?", stavka.Kolicina);
+                    using (OleDbCommand komanda_proveri = new OleDbCommand(proveri_stavku, konekcija))
+                    using (OleDbDataReader dr = komanda_proveri.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            int postojeca_kolicina = 0;
+                            int.TryParse(dr["kolicina"].ToString(), out postojeca_kolicina);
+                            int azurirana_kolicina = postojeca_kolicina + stavka.Kolicina;
 
-                    komanda_dodaj_stavku.ExecuteNonQuery();
+                            string update_stavku = $@"update Stavka_racuna
+                                              set kolicina = {azurirana_kolicina}
+                                              where id_racun  = {id_racuna}
+                                              and id_jelo   = {stavka.Id_jelo}
+                                              and id_prilog = {stavka.Id_prilog}";
+
+                            OleDbCommand komanda_update = new OleDbCommand(update_stavku, konekcija);
+                            komanda_update.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            string dodaj_stavku = $@"insert into Stavka_racuna
+                                                     (id_racun, id_jelo, id_prilog, cenaJelo, cenaPrilog, kolicina)
+                                                     values ({id_racuna}, {stavka.Id_jelo}, {stavka.Id_prilog},
+                                                     {stavka.CenaJelo}, {stavka.CenaPrilog}, {stavka.Kolicina})";
+
+                            OleDbCommand komanda_dodaj_stavku = new OleDbCommand(dodaj_stavku, konekcija);
+                            komanda_dodaj_stavku.ExecuteNonQuery();
+                        }
+                    }
                 }
 
                 lista_stavke_racuna.Clear();

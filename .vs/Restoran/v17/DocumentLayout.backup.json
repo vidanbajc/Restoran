@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\PC\\Desktop\\Restoran\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|C:\\Users\\PC\\Desktop\\Restoran\\restoran\\radnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|solutionrelative:restoran\\radnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|c:\\users\\pc\\desktop\\restoran\\restoran\\meni.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|solutionrelative:restoran\\meni.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|C:\\Users\\PC\\Desktop\\Restoran\\restoran\\izmeni.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|solutionrelative:restoran\\izmeni.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|C:\\Users\\PC\\Desktop\\Restoran\\restoran\\izmeni.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|solutionrelative:restoran\\izmeni.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|C:\\Users\\PC\\Desktop\\Restoran\\restoran\\radnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|solutionrelative:restoran\\radnik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{24C09C0C-B23F-43BE-BCF4-65EAF7588948}|Restoran\\Restoran.csproj|C:\\Users\\PC\\Desktop\\Restoran\\restoran\\meni.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -30,45 +38,69 @@
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Izmeni.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Restoran\\Restoran\\Izmeni.cs",
+              "RelativeDocumentMoniker": "Restoran\\Izmeni.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Restoran\\Restoran\\Izmeni.cs",
+              "RelativeToolTip": "Restoran\\Izmeni.cs",
+              "ViewState": "AgIAALwAAAAAAAAAAAAmwM4AAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-10T07:42:43.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Izmeni.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Restoran\\Restoran\\Izmeni.cs",
+              "RelativeDocumentMoniker": "Restoran\\Izmeni.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Restoran\\Restoran\\Izmeni.cs [Design]",
+              "RelativeToolTip": "Restoran\\Izmeni.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-10T07:34:59.257Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Meni.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Restoran\\Restoran\\Meni.cs",
               "RelativeDocumentMoniker": "Restoran\\Meni.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\Restoran\\Restoran\\Meni.cs",
               "RelativeToolTip": "Restoran\\Meni.cs",
-              "ViewState": "AgIAAB0BAAAAAAAAAAAAACYBAAANAAAAAAAAAA==",
+              "ViewState": "AgIAABkBAAAAAAAAAAAmwC4BAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-08T18:03:16.634Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Meni.cs [Design]",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Restoran\\Restoran\\Meni.cs",
               "RelativeDocumentMoniker": "Restoran\\Meni.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\Restoran\\Restoran\\Meni.cs [Design]",
               "RelativeToolTip": "Restoran\\Meni.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T18:02:47.816Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-06-08T18:02:47.816Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Radnik.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Restoran\\Restoran\\Radnik.cs",
               "RelativeDocumentMoniker": "Restoran\\Radnik.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\Restoran\\Restoran\\Radnik.cs",
               "RelativeToolTip": "Restoran\\Radnik.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAAAEAAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAkwDEAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-08T17:58:34.944Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Radnik.cs [Design]",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Restoran\\Restoran\\Radnik.cs",
               "RelativeDocumentMoniker": "Restoran\\Radnik.cs",

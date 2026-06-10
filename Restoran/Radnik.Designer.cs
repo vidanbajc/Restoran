@@ -35,18 +35,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.gridview_stavke_racuna = new System.Windows.Forms.DataGridView();
-            this.gridview_racuni = new System.Windows.Forms.DataGridView();
-            this.btn_dodaj_stavku = new System.Windows.Forms.Button();
-            this.btn_novi_racun = new System.Windows.Forms.Button();
-            this.btn_odjavi_se = new System.Windows.Forms.Button();
-            this.id_racuna = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ukupna_cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_racun = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_jelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_prilog = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cena_jelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cena_prilog = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kolicina = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridview_racuni = new System.Windows.Forms.DataGridView();
+            this.id_racuna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ukupna_cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_dodaj_stavku = new System.Windows.Forms.Button();
+            this.btn_novi_racun = new System.Windows.Forms.Button();
+            this.btn_odjavi_se = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_stavke_racuna)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_racuni)).BeginInit();
             this.SuspendLayout();
@@ -72,6 +72,7 @@
             this.btn_izmeni_stavku.TabIndex = 26;
             this.btn_izmeni_stavku.Text = "Izmeni stavku";
             this.btn_izmeni_stavku.UseVisualStyleBackColor = true;
+            this.btn_izmeni_stavku.Click += new System.EventHandler(this.btn_izmeni_stavku_Click);
             // 
             // label4
             // 
@@ -123,85 +124,6 @@
             this.gridview_stavke_racuna.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridview_stavke_racuna.Size = new System.Drawing.Size(613, 228);
             this.gridview_stavke_racuna.TabIndex = 22;
-            // 
-            // gridview_racuni
-            // 
-            this.gridview_racuni.AllowUserToAddRows = false;
-            this.gridview_racuni.AllowUserToDeleteRows = false;
-            this.gridview_racuni.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridview_racuni.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_racuna,
-            this.ukupna_cena});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridview_racuni.DefaultCellStyle = dataGridViewCellStyle2;
-            this.gridview_racuni.Location = new System.Drawing.Point(17, 38);
-            this.gridview_racuni.Margin = new System.Windows.Forms.Padding(4);
-            this.gridview_racuni.Name = "gridview_racuni";
-            this.gridview_racuni.ReadOnly = true;
-            this.gridview_racuni.RowHeadersWidth = 51;
-            this.gridview_racuni.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridview_racuni.Size = new System.Drawing.Size(613, 228);
-            this.gridview_racuni.TabIndex = 21;
-            // 
-            // btn_dodaj_stavku
-            // 
-            this.btn_dodaj_stavku.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_dodaj_stavku.Location = new System.Drawing.Point(672, 176);
-            this.btn_dodaj_stavku.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_dodaj_stavku.Name = "btn_dodaj_stavku";
-            this.btn_dodaj_stavku.Size = new System.Drawing.Size(175, 70);
-            this.btn_dodaj_stavku.TabIndex = 25;
-            this.btn_dodaj_stavku.Text = "Dodaj stavku";
-            this.btn_dodaj_stavku.UseVisualStyleBackColor = true;
-            this.btn_dodaj_stavku.Click += new System.EventHandler(this.btn_dodaj_stavku_Click);
-            // 
-            // btn_novi_racun
-            // 
-            this.btn_novi_racun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_novi_racun.Location = new System.Drawing.Point(672, 98);
-            this.btn_novi_racun.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_novi_racun.Name = "btn_novi_racun";
-            this.btn_novi_racun.Size = new System.Drawing.Size(175, 70);
-            this.btn_novi_racun.TabIndex = 29;
-            this.btn_novi_racun.Text = "Novi racun";
-            this.btn_novi_racun.UseVisualStyleBackColor = true;
-            this.btn_novi_racun.Click += new System.EventHandler(this.btn_novi_racun_Click);
-            // 
-            // btn_odjavi_se
-            // 
-            this.btn_odjavi_se.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_odjavi_se.Location = new System.Drawing.Point(672, 410);
-            this.btn_odjavi_se.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_odjavi_se.Name = "btn_odjavi_se";
-            this.btn_odjavi_se.Size = new System.Drawing.Size(175, 70);
-            this.btn_odjavi_se.TabIndex = 30;
-            this.btn_odjavi_se.Text = "Izadji";
-            this.btn_odjavi_se.UseVisualStyleBackColor = true;
-            this.btn_odjavi_se.Click += new System.EventHandler(this.btn_odjavi_se_Click);
-            // 
-            // id_racuna
-            // 
-            this.id_racuna.DataPropertyName = "id_racun";
-            this.id_racuna.HeaderText = "sifra";
-            this.id_racuna.MinimumWidth = 6;
-            this.id_racuna.Name = "id_racuna";
-            this.id_racuna.ReadOnly = true;
-            this.id_racuna.Width = 125;
-            // 
-            // ukupna_cena
-            // 
-            this.ukupna_cena.DataPropertyName = "ukupna_cena";
-            this.ukupna_cena.HeaderText = "ukupna cena";
-            this.ukupna_cena.MinimumWidth = 6;
-            this.ukupna_cena.Name = "ukupna_cena";
-            this.ukupna_cena.ReadOnly = true;
-            this.ukupna_cena.Width = 125;
             // 
             // id_racun
             // 
@@ -256,6 +178,86 @@
             this.kolicina.Name = "kolicina";
             this.kolicina.ReadOnly = true;
             this.kolicina.Width = 125;
+            // 
+            // gridview_racuni
+            // 
+            this.gridview_racuni.AllowUserToAddRows = false;
+            this.gridview_racuni.AllowUserToDeleteRows = false;
+            this.gridview_racuni.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridview_racuni.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_racuna,
+            this.ukupna_cena});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridview_racuni.DefaultCellStyle = dataGridViewCellStyle2;
+            this.gridview_racuni.Location = new System.Drawing.Point(17, 38);
+            this.gridview_racuni.Margin = new System.Windows.Forms.Padding(4);
+            this.gridview_racuni.Name = "gridview_racuni";
+            this.gridview_racuni.ReadOnly = true;
+            this.gridview_racuni.RowHeadersWidth = 51;
+            this.gridview_racuni.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridview_racuni.Size = new System.Drawing.Size(613, 228);
+            this.gridview_racuni.TabIndex = 21;
+            this.gridview_racuni.SelectionChanged += new System.EventHandler(this.gridview_racuni_SelectionChanged);
+            // 
+            // id_racuna
+            // 
+            this.id_racuna.DataPropertyName = "id_racun";
+            this.id_racuna.HeaderText = "sifra";
+            this.id_racuna.MinimumWidth = 6;
+            this.id_racuna.Name = "id_racuna";
+            this.id_racuna.ReadOnly = true;
+            this.id_racuna.Width = 125;
+            // 
+            // ukupna_cena
+            // 
+            this.ukupna_cena.DataPropertyName = "ukupna_cena";
+            this.ukupna_cena.HeaderText = "ukupna cena";
+            this.ukupna_cena.MinimumWidth = 6;
+            this.ukupna_cena.Name = "ukupna_cena";
+            this.ukupna_cena.ReadOnly = true;
+            this.ukupna_cena.Width = 125;
+            // 
+            // btn_dodaj_stavku
+            // 
+            this.btn_dodaj_stavku.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_dodaj_stavku.Location = new System.Drawing.Point(672, 176);
+            this.btn_dodaj_stavku.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_dodaj_stavku.Name = "btn_dodaj_stavku";
+            this.btn_dodaj_stavku.Size = new System.Drawing.Size(175, 70);
+            this.btn_dodaj_stavku.TabIndex = 25;
+            this.btn_dodaj_stavku.Text = "Dodaj stavku";
+            this.btn_dodaj_stavku.UseVisualStyleBackColor = true;
+            this.btn_dodaj_stavku.Click += new System.EventHandler(this.btn_dodaj_stavku_Click);
+            // 
+            // btn_novi_racun
+            // 
+            this.btn_novi_racun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_novi_racun.Location = new System.Drawing.Point(672, 98);
+            this.btn_novi_racun.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_novi_racun.Name = "btn_novi_racun";
+            this.btn_novi_racun.Size = new System.Drawing.Size(175, 70);
+            this.btn_novi_racun.TabIndex = 29;
+            this.btn_novi_racun.Text = "Novi racun";
+            this.btn_novi_racun.UseVisualStyleBackColor = true;
+            this.btn_novi_racun.Click += new System.EventHandler(this.btn_novi_racun_Click);
+            // 
+            // btn_odjavi_se
+            // 
+            this.btn_odjavi_se.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_odjavi_se.Location = new System.Drawing.Point(672, 410);
+            this.btn_odjavi_se.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_odjavi_se.Name = "btn_odjavi_se";
+            this.btn_odjavi_se.Size = new System.Drawing.Size(175, 70);
+            this.btn_odjavi_se.TabIndex = 30;
+            this.btn_odjavi_se.Text = "Izadji";
+            this.btn_odjavi_se.UseVisualStyleBackColor = true;
+            this.btn_odjavi_se.Click += new System.EventHandler(this.btn_odjavi_se_Click);
             // 
             // Radnik
             // 

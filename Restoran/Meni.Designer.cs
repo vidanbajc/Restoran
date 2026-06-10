@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cb_naziv_priloga = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -47,21 +47,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gridview_prilozi = new System.Windows.Forms.DataGridView();
-            this.gridview_jela = new System.Windows.Forms.DataGridView();
-            this.btn_sacuvaj_racun = new System.Windows.Forms.Button();
-            this.btn_izadji = new System.Windows.Forms.Button();
             this.id_priloga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naziv_priloga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cena_priloga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gridview_jela = new System.Windows.Forms.DataGridView();
             this.id_jela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.naziv_jela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cena_jela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_sacuvaj_racun = new System.Windows.Forms.Button();
+            this.btn_izadji = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_prilozi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_jela)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox4
@@ -263,14 +265,14 @@
             this.id_priloga,
             this.naziv_priloga,
             this.cena_priloga});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridview_prilozi.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridview_prilozi.DefaultCellStyle = dataGridViewCellStyle3;
             this.gridview_prilozi.Location = new System.Drawing.Point(17, 314);
             this.gridview_prilozi.Margin = new System.Windows.Forms.Padding(4);
             this.gridview_prilozi.Name = "gridview_prilozi";
@@ -279,57 +281,6 @@
             this.gridview_prilozi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridview_prilozi.Size = new System.Drawing.Size(613, 228);
             this.gridview_prilozi.TabIndex = 19;
-            // 
-            // gridview_jela
-            // 
-            this.gridview_jela.AllowUserToAddRows = false;
-            this.gridview_jela.AllowUserToDeleteRows = false;
-            this.gridview_jela.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridview_jela.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_jela,
-            this.naziv_jela,
-            this.cena_jela});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridview_jela.DefaultCellStyle = dataGridViewCellStyle10;
-            this.gridview_jela.Location = new System.Drawing.Point(17, 37);
-            this.gridview_jela.Margin = new System.Windows.Forms.Padding(4);
-            this.gridview_jela.Name = "gridview_jela";
-            this.gridview_jela.ReadOnly = true;
-            this.gridview_jela.RowHeadersWidth = 51;
-            this.gridview_jela.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridview_jela.Size = new System.Drawing.Size(613, 228);
-            this.gridview_jela.TabIndex = 18;
-            this.gridview_jela.SelectionChanged += new System.EventHandler(this.gridview_jela_SelectionChanged);
-            // 
-            // btn_sacuvaj_racun
-            // 
-            this.btn_sacuvaj_racun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_sacuvaj_racun.Location = new System.Drawing.Point(931, 325);
-            this.btn_sacuvaj_racun.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_sacuvaj_racun.Name = "btn_sacuvaj_racun";
-            this.btn_sacuvaj_racun.Size = new System.Drawing.Size(175, 70);
-            this.btn_sacuvaj_racun.TabIndex = 26;
-            this.btn_sacuvaj_racun.Text = "Sacuvaj racun";
-            this.btn_sacuvaj_racun.UseVisualStyleBackColor = true;
-            this.btn_sacuvaj_racun.Click += new System.EventHandler(this.btn_sacuvaj_racun_Click);
-            // 
-            // btn_izadji
-            // 
-            this.btn_izadji.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_izadji.Location = new System.Drawing.Point(931, 403);
-            this.btn_izadji.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_izadji.Name = "btn_izadji";
-            this.btn_izadji.Size = new System.Drawing.Size(175, 70);
-            this.btn_izadji.TabIndex = 27;
-            this.btn_izadji.Text = "Izadji";
-            this.btn_izadji.UseVisualStyleBackColor = true;
-            this.btn_izadji.Click += new System.EventHandler(this.btn_izadji_Click);
             // 
             // id_priloga
             // 
@@ -358,6 +309,33 @@
             this.cena_priloga.ReadOnly = true;
             this.cena_priloga.Width = 125;
             // 
+            // gridview_jela
+            // 
+            this.gridview_jela.AllowUserToAddRows = false;
+            this.gridview_jela.AllowUserToDeleteRows = false;
+            this.gridview_jela.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridview_jela.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_jela,
+            this.naziv_jela,
+            this.cena_jela});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridview_jela.DefaultCellStyle = dataGridViewCellStyle4;
+            this.gridview_jela.Location = new System.Drawing.Point(17, 37);
+            this.gridview_jela.Margin = new System.Windows.Forms.Padding(4);
+            this.gridview_jela.Name = "gridview_jela";
+            this.gridview_jela.ReadOnly = true;
+            this.gridview_jela.RowHeadersWidth = 51;
+            this.gridview_jela.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridview_jela.Size = new System.Drawing.Size(613, 228);
+            this.gridview_jela.TabIndex = 18;
+            this.gridview_jela.SelectionChanged += new System.EventHandler(this.gridview_jela_SelectionChanged);
+            // 
             // id_jela
             // 
             this.id_jela.DataPropertyName = "id_jelo";
@@ -385,11 +363,58 @@
             this.cena_jela.ReadOnly = true;
             this.cena_jela.Width = 125;
             // 
+            // btn_sacuvaj_racun
+            // 
+            this.btn_sacuvaj_racun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_sacuvaj_racun.Location = new System.Drawing.Point(931, 325);
+            this.btn_sacuvaj_racun.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_sacuvaj_racun.Name = "btn_sacuvaj_racun";
+            this.btn_sacuvaj_racun.Size = new System.Drawing.Size(175, 70);
+            this.btn_sacuvaj_racun.TabIndex = 26;
+            this.btn_sacuvaj_racun.Text = "Sacuvaj racun";
+            this.btn_sacuvaj_racun.UseVisualStyleBackColor = true;
+            this.btn_sacuvaj_racun.Click += new System.EventHandler(this.btn_sacuvaj_racun_Click);
+            // 
+            // btn_izadji
+            // 
+            this.btn_izadji.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_izadji.Location = new System.Drawing.Point(931, 403);
+            this.btn_izadji.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_izadji.Name = "btn_izadji";
+            this.btn_izadji.Size = new System.Drawing.Size(175, 70);
+            this.btn_izadji.TabIndex = 27;
+            this.btn_izadji.Text = "Izadji";
+            this.btn_izadji.UseVisualStyleBackColor = true;
+            this.btn_izadji.Click += new System.EventHandler(this.btn_izadji_Click);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(703, 314);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown1.TabIndex = 29;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // Meni
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 555);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.btn_izadji);
             this.Controls.Add(this.btn_sacuvaj_racun);
             this.Controls.Add(this.groupBox4);
@@ -410,6 +435,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_prilozi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_jela)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -443,5 +469,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn id_jela;
         private System.Windows.Forms.DataGridViewTextBoxColumn naziv_jela;
         private System.Windows.Forms.DataGridViewTextBoxColumn cena_jela;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

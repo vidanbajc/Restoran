@@ -52,6 +52,12 @@
     <Compile Include="Administrator.Designer.cs">
       <DependentUpon>Administrator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Izmeni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izmeni.Designer.cs">
+      <DependentUpon>Izmeni.cs</DependentUpon>
+    </Compile>
     <Compile Include="Meni.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     <Compile Include="Stavka_racuna.cs" />
     <EmbeddedResource Include="Administrator.resx">
       <DependentUpon>Administrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izmeni.resx">
+      <DependentUpon>Izmeni.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Meni.resx">
       <DependentUpon>Meni.cs</DependentUpon>

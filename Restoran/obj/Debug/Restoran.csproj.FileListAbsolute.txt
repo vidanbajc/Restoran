@@ -25,3 +25,4 @@ C:\Users\PC\Desktop\Restoran\Restoran\obj\Debug\Restoran.csproj.GenerateResource
 C:\Users\PC\Desktop\Restoran\Restoran\obj\Debug\Restoran.csproj.CoreCompileInputs.cache
 C:\Users\PC\Desktop\Restoran\Restoran\obj\Debug\Restoran.exe
 C:\Users\PC\Desktop\Restoran\Restoran\obj\Debug\Restoran.pdb
+C:\Users\PC\Desktop\Restoran\Restoran\obj\Debug\Restoran.Izmeni.resources
