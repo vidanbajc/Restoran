@@ -60,9 +60,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 179);
+            this.label2.Location = new System.Drawing.Point(12, 220);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 18);
+            this.label2.Size = new System.Drawing.Size(67, 24);
             this.label2.TabIndex = 25;
             this.label2.Text = "Prilozi";
             // 
@@ -70,9 +71,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 8);
+            this.label1.Location = new System.Drawing.Point(12, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 18);
+            this.label1.Size = new System.Drawing.Size(48, 24);
             this.label1.TabIndex = 24;
             this.label1.Text = "Jela";
             // 
@@ -93,12 +95,13 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gridview_prilozi.DefaultCellStyle = dataGridViewCellStyle3;
-            this.gridview_prilozi.Location = new System.Drawing.Point(12, 200);
+            this.gridview_prilozi.Location = new System.Drawing.Point(16, 246);
+            this.gridview_prilozi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gridview_prilozi.Name = "gridview_prilozi";
             this.gridview_prilozi.ReadOnly = true;
             this.gridview_prilozi.RowHeadersWidth = 51;
             this.gridview_prilozi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridview_prilozi.Size = new System.Drawing.Size(428, 135);
+            this.gridview_prilozi.Size = new System.Drawing.Size(571, 166);
             this.gridview_prilozi.TabIndex = 23;
             // 
             // id_priloga
@@ -145,12 +148,13 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gridview_jela.DefaultCellStyle = dataGridViewCellStyle4;
-            this.gridview_jela.Location = new System.Drawing.Point(12, 31);
+            this.gridview_jela.Location = new System.Drawing.Point(16, 38);
+            this.gridview_jela.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gridview_jela.Name = "gridview_jela";
             this.gridview_jela.ReadOnly = true;
             this.gridview_jela.RowHeadersWidth = 51;
             this.gridview_jela.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridview_jela.Size = new System.Drawing.Size(428, 135);
+            this.gridview_jela.Size = new System.Drawing.Size(571, 166);
             this.gridview_jela.TabIndex = 22;
             // 
             // id_jela
@@ -182,49 +186,54 @@
             // 
             // tb_naziv_jelo_prilog
             // 
-            this.tb_naziv_jelo_prilog.Location = new System.Drawing.Point(462, 46);
+            this.tb_naziv_jelo_prilog.Location = new System.Drawing.Point(616, 57);
+            this.tb_naziv_jelo_prilog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tb_naziv_jelo_prilog.Name = "tb_naziv_jelo_prilog";
-            this.tb_naziv_jelo_prilog.Size = new System.Drawing.Size(100, 20);
+            this.tb_naziv_jelo_prilog.Size = new System.Drawing.Size(132, 22);
             this.tb_naziv_jelo_prilog.TabIndex = 26;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(459, 27);
+            this.label5.Location = new System.Drawing.Point(612, 33);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 16);
+            this.label5.Size = new System.Drawing.Size(137, 20);
             this.label5.TabIndex = 27;
             this.label5.Text = "Naziv jela/priloga";
             // 
             // nud_cena_jelo_prilog
             // 
-            this.nud_cena_jelo_prilog.Location = new System.Drawing.Point(462, 91);
+            this.nud_cena_jelo_prilog.Location = new System.Drawing.Point(616, 112);
+            this.nud_cena_jelo_prilog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nud_cena_jelo_prilog.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
             this.nud_cena_jelo_prilog.Name = "nud_cena_jelo_prilog";
-            this.nud_cena_jelo_prilog.Size = new System.Drawing.Size(100, 20);
+            this.nud_cena_jelo_prilog.Size = new System.Drawing.Size(133, 22);
             this.nud_cena_jelo_prilog.TabIndex = 28;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(459, 72);
+            this.label3.Location = new System.Drawing.Point(612, 89);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 16);
+            this.label3.Size = new System.Drawing.Size(134, 20);
             this.label3.TabIndex = 29;
             this.label3.Text = "Cena jela/priloga";
             // 
             // btn_odjavi_se
             // 
             this.btn_odjavi_se.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_odjavi_se.Location = new System.Drawing.Point(587, 278);
+            this.btn_odjavi_se.Location = new System.Drawing.Point(783, 342);
+            this.btn_odjavi_se.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_odjavi_se.Name = "btn_odjavi_se";
-            this.btn_odjavi_se.Size = new System.Drawing.Size(131, 57);
+            this.btn_odjavi_se.Size = new System.Drawing.Size(175, 70);
             this.btn_odjavi_se.TabIndex = 35;
             this.btn_odjavi_se.Text = "Izadji";
             this.btn_odjavi_se.UseVisualStyleBackColor = true;
@@ -233,9 +242,10 @@
             // btn_novo_jelo_prilog
             // 
             this.btn_novo_jelo_prilog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_novo_jelo_prilog.Location = new System.Drawing.Point(587, 25);
+            this.btn_novo_jelo_prilog.Location = new System.Drawing.Point(783, 31);
+            this.btn_novo_jelo_prilog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_novo_jelo_prilog.Name = "btn_novo_jelo_prilog";
-            this.btn_novo_jelo_prilog.Size = new System.Drawing.Size(131, 57);
+            this.btn_novo_jelo_prilog.Size = new System.Drawing.Size(175, 70);
             this.btn_novo_jelo_prilog.TabIndex = 34;
             this.btn_novo_jelo_prilog.Text = "Novo jelo/prilog";
             this.btn_novo_jelo_prilog.UseVisualStyleBackColor = true;
@@ -244,19 +254,22 @@
             // btn_obrisi_jelo_prilog
             // 
             this.btn_obrisi_jelo_prilog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_obrisi_jelo_prilog.Location = new System.Drawing.Point(587, 152);
+            this.btn_obrisi_jelo_prilog.Location = new System.Drawing.Point(783, 187);
+            this.btn_obrisi_jelo_prilog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_obrisi_jelo_prilog.Name = "btn_obrisi_jelo_prilog";
-            this.btn_obrisi_jelo_prilog.Size = new System.Drawing.Size(131, 57);
+            this.btn_obrisi_jelo_prilog.Size = new System.Drawing.Size(175, 70);
             this.btn_obrisi_jelo_prilog.TabIndex = 33;
             this.btn_obrisi_jelo_prilog.Text = "Obrisi jelo/prilog";
             this.btn_obrisi_jelo_prilog.UseVisualStyleBackColor = true;
+            this.btn_obrisi_jelo_prilog.Click += new System.EventHandler(this.btn_obrisi_jelo_prilog_Click);
             // 
             // btn_izmeni_jelo_prilog
             // 
             this.btn_izmeni_jelo_prilog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_izmeni_jelo_prilog.Location = new System.Drawing.Point(587, 88);
+            this.btn_izmeni_jelo_prilog.Location = new System.Drawing.Point(783, 108);
+            this.btn_izmeni_jelo_prilog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_izmeni_jelo_prilog.Name = "btn_izmeni_jelo_prilog";
-            this.btn_izmeni_jelo_prilog.Size = new System.Drawing.Size(131, 57);
+            this.btn_izmeni_jelo_prilog.Size = new System.Drawing.Size(175, 70);
             this.btn_izmeni_jelo_prilog.TabIndex = 32;
             this.btn_izmeni_jelo_prilog.Text = "Izmeni jelo/prilog";
             this.btn_izmeni_jelo_prilog.UseVisualStyleBackColor = true;
@@ -265,20 +278,23 @@
             // btn_povezi_jelo_prilog
             // 
             this.btn_povezi_jelo_prilog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_povezi_jelo_prilog.Location = new System.Drawing.Point(587, 215);
+            this.btn_povezi_jelo_prilog.Location = new System.Drawing.Point(783, 265);
+            this.btn_povezi_jelo_prilog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_povezi_jelo_prilog.Name = "btn_povezi_jelo_prilog";
-            this.btn_povezi_jelo_prilog.Size = new System.Drawing.Size(131, 57);
+            this.btn_povezi_jelo_prilog.Size = new System.Drawing.Size(175, 70);
             this.btn_povezi_jelo_prilog.TabIndex = 31;
             this.btn_povezi_jelo_prilog.Text = "Povezi jelo i prilog";
             this.btn_povezi_jelo_prilog.UseVisualStyleBackColor = true;
+            this.btn_povezi_jelo_prilog.Click += new System.EventHandler(this.btn_povezi_jelo_prilog_Click);
             // 
             // rb_jelo
             // 
             this.rb_jelo.AutoSize = true;
             this.rb_jelo.Checked = true;
-            this.rb_jelo.Location = new System.Drawing.Point(462, 118);
+            this.rb_jelo.Location = new System.Drawing.Point(616, 145);
+            this.rb_jelo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rb_jelo.Name = "rb_jelo";
-            this.rb_jelo.Size = new System.Drawing.Size(44, 17);
+            this.rb_jelo.Size = new System.Drawing.Size(54, 20);
             this.rb_jelo.TabIndex = 36;
             this.rb_jelo.TabStop = true;
             this.rb_jelo.Text = "Jelo";
@@ -287,18 +303,19 @@
             // rb_prilog
             // 
             this.rb_prilog.AutoSize = true;
-            this.rb_prilog.Location = new System.Drawing.Point(462, 141);
+            this.rb_prilog.Location = new System.Drawing.Point(616, 174);
+            this.rb_prilog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rb_prilog.Name = "rb_prilog";
-            this.rb_prilog.Size = new System.Drawing.Size(51, 17);
+            this.rb_prilog.Size = new System.Drawing.Size(63, 20);
             this.rb_prilog.TabIndex = 37;
             this.rb_prilog.Text = "Prilog";
             this.rb_prilog.UseVisualStyleBackColor = true;
             // 
             // Administrator
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 347);
+            this.ClientSize = new System.Drawing.Size(973, 427);
             this.Controls.Add(this.rb_prilog);
             this.Controls.Add(this.rb_jelo);
             this.Controls.Add(this.btn_odjavi_se);
@@ -314,6 +331,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gridview_prilozi);
             this.Controls.Add(this.gridview_jela);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Administrator";
             this.Text = "Administrator";
             ((System.ComponentModel.ISupportInitialize)(this.gridview_prilozi)).EndInit();
