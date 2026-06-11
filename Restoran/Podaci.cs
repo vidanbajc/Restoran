@@ -12,41 +12,42 @@ namespace Restoran
 {
     public class Podaci
     {
-        public static void PopuniGrid(DataGridView gridview, string tabela)
+        public static DataTable PopuniGrid(string tabela)
         {
             string putanja = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Restoran.accdb;";
+            string upit = $"select * from {tabela}";
 
             using (OleDbConnection konekcija = new OleDbConnection(putanja))
             {
-                konekcija.Open();
-                string upit = $"select * from {tabela}";
                 OleDbDataAdapter da = new OleDbDataAdapter(upit, konekcija);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-
-                gridview.DataSource = dt;
+                return dt;
             }
         }
 
-        public static void PopuniCb(ComboBox cb, string tabela, string atribut)
+        public static List<string> PopuniCb(string tabela)
         {
             string putanja = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Restoran.accdb;";
+            string upit = $"select naziv from {tabela}";
+
+            List<string> lista = new List<string>();
 
             using (OleDbConnection konekcija = new OleDbConnection(putanja))
+            using (OleDbCommand komanda = new OleDbCommand(upit, konekcija))
             {
-                string upit = $"select {atribut} from {tabela}";
+                konekcija.Open();
 
-                OleDbDataAdapter da = new OleDbDataAdapter(upit, konekcija);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                cb.Items.Clear();
-
-                cb.Items.AddRange(
-                    dt.AsEnumerable()
-                        .Select(a => a[atribut].ToString())
-                        .ToArray());
+                using (OleDbDataReader dr = komanda.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        lista.Add(dr[0].ToString());
+                    }
+                }
             }
+
+            return lista;
         }
     }
 }

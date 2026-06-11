@@ -25,10 +25,10 @@ namespace Restoran
             gridview_jela.AutoGenerateColumns = false;
             gridview_prilozi.AutoGenerateColumns = false;
 
-            Podaci.PopuniGrid(gridview_jela, "Jelo");
-            Podaci.PopuniGrid(gridview_prilozi, "Prilog");
-            Podaci.PopuniCb(cb_naziv_jela, "Jelo", "naziv");
-            Podaci.PopuniCb(cb_naziv_priloga, "Prilog", "naziv");
+            gridview_jela.DataSource = Podaci.PopuniGrid("Jelo");
+            gridview_prilozi.DataSource = Podaci.PopuniGrid("Prilog");
+            cb_naziv_jela.Items.AddRange(Podaci.PopuniCb("Jelo").ToArray());
+            cb_naziv_priloga.Items.AddRange(Podaci.PopuniCb("Prilog").ToArray());
         }
 
         public Meni(int id_racuna)
@@ -40,10 +40,99 @@ namespace Restoran
             gridview_jela.AutoGenerateColumns = false;
             gridview_prilozi.AutoGenerateColumns = false;
 
-            Podaci.PopuniGrid(gridview_jela, "Jelo");
-            Podaci.PopuniGrid(gridview_prilozi, "Prilog");
-            Podaci.PopuniCb(cb_naziv_jela, "Jelo", "naziv");
-            Podaci.PopuniCb(cb_naziv_priloga, "Prilog", "naziv");
+            gridview_jela.DataSource = Podaci.PopuniGrid("Jelo");
+            gridview_prilozi.DataSource = Podaci.PopuniGrid("Prilog");
+            cb_naziv_jela.Items.AddRange(Podaci.PopuniCb("Jelo").ToArray());
+            cb_naziv_priloga.Items.AddRange(Podaci.PopuniCb("Prilog").ToArray());
+        }
+
+        private int DodajRacun(OleDbConnection konekcija, double cena)
+        {
+            int id;
+            string dodaj = $@"insert into Racun (ukupna_cena) values (?)";
+
+            using (OleDbCommand komanda = new OleDbCommand(dodaj, konekcija))
+            {
+                komanda.Parameters.AddWithValue("?", cena);
+                komanda.ExecuteNonQuery();
+            }
+
+            using (OleDbCommand komanda = new OleDbCommand("select @@identity", konekcija))
+            {
+                id = Convert.ToInt32(komanda.ExecuteScalar());
+                return id;
+            }
+        }
+
+        private int AzurirajRacun(OleDbConnection konekcija, double cena)
+        {
+            int id = this.id_racuna.Value;
+            string update = "update Racun set ukupna_cena = ? where id_racun = ?";
+
+            using (OleDbCommand komanda = new OleDbCommand(update, konekcija))
+            {
+                komanda.Parameters.AddWithValue("?", cena);
+                komanda.Parameters.AddWithValue("?", id);
+                komanda.ExecuteNonQuery();
+            }
+
+            return id;
+        }
+
+        private void SacuvajStavku(OleDbConnection konekcija, int id_racuna, Stavka_racuna stavka)
+        {
+            string proveri = $@"select kolicina 
+                                from Stavka_racuna 
+                                where id_racun = ? 
+                                and id_jelo = ? 
+                                and id_prilog = ?";
+
+            using (OleDbCommand komanda_proveri = new OleDbCommand(proveri, konekcija))
+            {
+                komanda_proveri.Parameters.AddWithValue("?", id_racuna);
+                komanda_proveri.Parameters.AddWithValue("?", stavka.Id_jelo);
+                komanda_proveri.Parameters.AddWithValue("?", stavka.Id_prilog);
+
+                using (OleDbDataReader dr = komanda_proveri.ExecuteReader())
+                {
+                    if (dr.Read())
+                    {
+                        int nova_kolicina = Convert.ToInt32(dr["kolicina"]) + stavka.Kolicina;
+
+                        string azuriraj_racun = $@"update Stavka_racuna 
+                                                   set kolicina = ?
+                                                   where id_racun = ? 
+                                                   and id_jelo = ? 
+                                                   and id_prilog = ?";
+
+                        using (OleDbCommand komanda_azuriraj_racun = new OleDbCommand(azuriraj_racun, konekcija))
+                        {
+                            komanda_azuriraj_racun.Parameters.AddWithValue("?", nova_kolicina);
+                            komanda_azuriraj_racun.Parameters.AddWithValue("?", id_racuna);
+                            komanda_azuriraj_racun.Parameters.AddWithValue("?", stavka.Id_jelo);
+                            komanda_azuriraj_racun.Parameters.AddWithValue("?", stavka.Id_prilog);
+                            komanda_azuriraj_racun.ExecuteNonQuery();
+                        }
+
+                        return;
+                    }
+
+                    string dodaj_racun = $@"insert into Stavka_racuna 
+                                            (id_racun, id_jelo, id_prilog, cenaJelo, cenaPrilog, kolicina) 
+                                            values (?, ?, ?, ?, ?, ?)";
+
+                    using (OleDbCommand komanda_dodaj_racun = new OleDbCommand(dodaj_racun, konekcija))
+                    {
+                        komanda_dodaj_racun.Parameters.AddWithValue("?", id_racuna);
+                        komanda_dodaj_racun.Parameters.AddWithValue("?", stavka.Id_jelo);
+                        komanda_dodaj_racun.Parameters.AddWithValue("?", stavka.Id_prilog);
+                        komanda_dodaj_racun.Parameters.AddWithValue("?", stavka.CenaJelo);
+                        komanda_dodaj_racun.Parameters.AddWithValue("?", stavka.CenaPrilog);
+                        komanda_dodaj_racun.Parameters.AddWithValue("?", stavka.Kolicina);
+                        komanda_dodaj_racun.ExecuteNonQuery();
+                    }
+                }
+            }
         }
 
         private void btn_filtriraj_Click(object sender, EventArgs e)
@@ -149,29 +238,32 @@ namespace Restoran
                 return;
             }
 
+            if(nud_kolicina.Value <= 0)
+            {
+                MessageBox.Show("Morate uneti validan broj!", "Upozorenje", MessageBoxButtons.OK);
+                return;
+            }
+
             DataGridViewRow red_jelo = gridview_jela.CurrentRow;
             DataGridViewRow red_prilog = gridview_prilozi.CurrentRow;
 
-            int.TryParse(red_jelo.Cells[0].Value.ToString(), out int id_jela);
-            int.TryParse(red_prilog.Cells[0].Value.ToString(), out int id_priloga);
-            double.TryParse(red_jelo.Cells[2].Value.ToString(), out double cena_jela);
-            double.TryParse(red_prilog.Cells[2].Value.ToString(), out double cena_priloga);
+            int kolicina = Convert.ToInt32(nud_kolicina.Value);
+            int.TryParse(red_jelo.Cells[0].Value.ToString(), out int id_jelo);
+            int.TryParse(red_prilog.Cells[0].Value.ToString(), out int id_prilog);
+            double.TryParse(red_jelo.Cells[2].Value.ToString(), out double cena_jelo);
+            double.TryParse(red_prilog.Cells[2].Value.ToString(), out double cena_prilog);
 
-            Stavka_racuna stavka = new Stavka_racuna(id_jela, id_priloga, cena_jela, cena_priloga, kolicina: 1);
-            Stavka_racuna ista_stavka = null;
+            Stavka_racuna stavka = new Stavka_racuna(id_jelo, id_prilog, cena_jelo, cena_prilog, kolicina);
 
-            if (lista_stavke_racuna != null)
-            {
-                ista_stavka = lista_stavke_racuna
-                                .FirstOrDefault(s => 
-                                    s.Id_jelo == stavka.Id_jelo &&
-                                    s.Id_prilog == stavka.Id_prilog);
-            }
+            Stavka_racuna ista_stavka = lista_stavke_racuna
+                                            .FirstOrDefault(s => 
+                                                s.Id_jelo == stavka.Id_jelo && 
+                                                s.Id_prilog == stavka.Id_prilog);
 
             if(ista_stavka != null)
             {
-                ista_stavka.Kolicina++;
-                MessageBox.Show("Uspesno ste dodali stavku!", "Obavestenje", MessageBoxButtons.OK);
+                ista_stavka.Kolicina += kolicina;
+                MessageBox.Show("Uspesno ste uvecali kolicinu!", "Obavestenje", MessageBoxButtons.OK);
                 return;
             }
 
@@ -192,11 +284,13 @@ namespace Restoran
                                on p.id_prilog = pr.id_prilog)
                                left join Jelo j
                                on pr.id_jelo = j.id_jelo
-                               where j.id_jelo = {id_jela}";
+                               where j.id_jelo = ?";
 
             using (OleDbConnection konekcija = new OleDbConnection(putanja))
             using (OleDbCommand komanda_prilozi = new OleDbCommand(prilozi, konekcija))
             {
+                komanda_prilozi.Parameters.AddWithValue("?", id_jela);
+
                 OleDbDataAdapter da = new OleDbDataAdapter(komanda_prilozi);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -215,102 +309,35 @@ namespace Restoran
 
             string dodaj_racun = $@"insert into Racun (ukupna_cena) values (?)";
             double cena = 0;
+
             lista_stavke_racuna
                 .ForEach(s => 
                     cena += s.Kolicina * (s.CenaJelo + s.CenaPrilog));
 
-            using (OleDbConnection konekcija = new OleDbConnection(putanja))
-            using (OleDbCommand komanda_dodaj_racun = new OleDbCommand(dodaj_racun, konekcija))
-            {
-                konekcija.Open();
-                int id_racuna = 0;
+            OleDbConnection konekcija = new OleDbConnection(putanja);
+            konekcija.Open();
 
-                if (this.id_racuna.HasValue)
-                {
-                    id_racuna = this.id_racuna.Value;
+            int id_racuna = 0;
 
-                    string vrati_cenu = $@"select ukupna_cena
-                                           from Racun
-                                           where id_racun = {id_racuna}";
+            if (this.id_racuna.HasValue)
+                id_racuna = AzurirajRacun(konekcija, cena);
 
-                    using (OleDbCommand komanda_vrati_cenu = new OleDbCommand(vrati_cenu, konekcija))
-                    {
-                        var rezultat = komanda_vrati_cenu.ExecuteScalar();
+            else
+                id_racuna = DodajRacun(konekcija, cena);
 
-                        double postojeca_cena = 0;
-                        if (rezultat != null)
-                            double.TryParse(rezultat.ToString(), out postojeca_cena);
+            lista_stavke_racuna
+                .ForEach(s => 
+                    SacuvajStavku(konekcija, id_racuna, s));
 
-                        cena += postojeca_cena;
-                    }
+            konekcija.Close();
 
-                    string azuriraj_racun = $@"update Racun
-                                               set ukupna_cena = ?
-                                               where id_racun = {id_racuna}";
-
-                    using (OleDbCommand komanda_azuriraj = new OleDbCommand(azuriraj_racun, konekcija))
-                    {
-                        komanda_azuriraj.Parameters.AddWithValue("?", cena);
-                        komanda_azuriraj.ExecuteNonQuery();
-                    }
-                }
-                else
-                {
-                    komanda_dodaj_racun.Parameters.AddWithValue("?", cena);
-                    komanda_dodaj_racun.ExecuteNonQuery();
-
-                    OleDbCommand komanda_id_racuna = new OleDbCommand("select @@identity", konekcija);
-                    id_racuna = Convert.ToInt32(komanda_id_racuna.ExecuteScalar());
-                }
-
-                foreach (Stavka_racuna stavka in lista_stavke_racuna)
-                {
-                    string proveri_stavku = $@"select kolicina
-                                               from Stavka_racuna
-                                               where id_racun  = {id_racuna}
-                                               and id_jelo   = {stavka.Id_jelo}
-                                               and id_prilog = {stavka.Id_prilog}";
-
-                    using (OleDbCommand komanda_proveri = new OleDbCommand(proveri_stavku, konekcija))
-                    using (OleDbDataReader dr = komanda_proveri.ExecuteReader())
-                    {
-                        if (dr.Read())
-                        {
-                            int postojeca_kolicina = 0;
-                            int.TryParse(dr["kolicina"].ToString(), out postojeca_kolicina);
-                            int azurirana_kolicina = postojeca_kolicina + stavka.Kolicina;
-
-                            string update_stavku = $@"update Stavka_racuna
-                                                      set kolicina = {azurirana_kolicina}
-                                                      where id_racun  = {id_racuna}
-                                                      and id_jelo   = {stavka.Id_jelo}
-                                                      and id_prilog = {stavka.Id_prilog}";
-
-                            OleDbCommand komanda_update = new OleDbCommand(update_stavku, konekcija);
-                            komanda_update.ExecuteNonQuery();
-                        }
-                        else
-                        {
-                            string dodaj_stavku = $@"insert into Stavka_racuna
-                                                     (id_racun, id_jelo, id_prilog, cenaJelo, cenaPrilog, kolicina)
-                                                     values ({id_racuna}, {stavka.Id_jelo}, {stavka.Id_prilog},
-                                                     {stavka.CenaJelo}, {stavka.CenaPrilog}, {stavka.Kolicina})";
-
-                            OleDbCommand komanda_dodaj_stavku = new OleDbCommand(dodaj_stavku, konekcija);
-                            komanda_dodaj_stavku.ExecuteNonQuery();
-                        }
-                    }
-                }
-
-                lista_stavke_racuna.Clear();
-                lista_stavke_racuna = null;
-                MessageBox.Show("Racun je uspesno sacuvan!", "Obavestenje", MessageBoxButtons.OK);
-            }
+            lista_stavke_racuna.Clear();
+            MessageBox.Show("Uspesno ste sacuvali racun!", "Obavestenje", MessageBoxButtons.OK);
         }
 
         private void btn_izadji_Click(object sender, EventArgs e)
         {
-            if (lista_stavke_racuna == null || lista_stavke_racuna.Count == 0)
+            if (lista_stavke_racuna.Count == 0)
             {
                 this.Close();
                 return;

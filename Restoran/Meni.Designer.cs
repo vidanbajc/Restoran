@@ -56,12 +56,15 @@
             this.cena_jela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_sacuvaj_racun = new System.Windows.Forms.Button();
             this.btn_izadji = new System.Windows.Forms.Button();
+            this.nud_kolicina = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_prilozi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_jela)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_kolicina)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox4
@@ -101,7 +104,7 @@
             // btn_filtriraj
             // 
             this.btn_filtriraj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_filtriraj.Location = new System.Drawing.Point(931, 169);
+            this.btn_filtriraj.Location = new System.Drawing.Point(931, 217);
             this.btn_filtriraj.Margin = new System.Windows.Forms.Padding(4);
             this.btn_filtriraj.Name = "btn_filtriraj";
             this.btn_filtriraj.Size = new System.Drawing.Size(175, 70);
@@ -113,7 +116,7 @@
             // btn_sacuvaj_stavku
             // 
             this.btn_sacuvaj_stavku.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_sacuvaj_stavku.Location = new System.Drawing.Point(931, 247);
+            this.btn_sacuvaj_stavku.Location = new System.Drawing.Point(931, 295);
             this.btn_sacuvaj_stavku.Margin = new System.Windows.Forms.Padding(4);
             this.btn_sacuvaj_stavku.Name = "btn_sacuvaj_stavku";
             this.btn_sacuvaj_stavku.Size = new System.Drawing.Size(175, 70);
@@ -364,7 +367,7 @@
             // btn_sacuvaj_racun
             // 
             this.btn_sacuvaj_racun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_sacuvaj_racun.Location = new System.Drawing.Point(931, 325);
+            this.btn_sacuvaj_racun.Location = new System.Drawing.Point(931, 373);
             this.btn_sacuvaj_racun.Margin = new System.Windows.Forms.Padding(4);
             this.btn_sacuvaj_racun.Name = "btn_sacuvaj_racun";
             this.btn_sacuvaj_racun.Size = new System.Drawing.Size(175, 70);
@@ -376,7 +379,7 @@
             // btn_izadji
             // 
             this.btn_izadji.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_izadji.Location = new System.Drawing.Point(931, 403);
+            this.btn_izadji.Location = new System.Drawing.Point(931, 451);
             this.btn_izadji.Margin = new System.Windows.Forms.Padding(4);
             this.btn_izadji.Name = "btn_izadji";
             this.btn_izadji.Size = new System.Drawing.Size(175, 70);
@@ -385,11 +388,41 @@
             this.btn_izadji.UseVisualStyleBackColor = true;
             this.btn_izadji.Click += new System.EventHandler(this.btn_izadji_Click);
             // 
+            // nud_kolicina
+            // 
+            this.nud_kolicina.Location = new System.Drawing.Point(935, 172);
+            this.nud_kolicina.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nud_kolicina.Name = "nud_kolicina";
+            this.nud_kolicina.Size = new System.Drawing.Size(120, 22);
+            this.nud_kolicina.TabIndex = 28;
+            this.nud_kolicina.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(931, 149);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 20);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "Kolicina";
+            // 
             // Meni
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 555);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.nud_kolicina);
             this.Controls.Add(this.btn_izadji);
             this.Controls.Add(this.btn_sacuvaj_racun);
             this.Controls.Add(this.groupBox4);
@@ -410,6 +443,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_prilozi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridview_jela)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_kolicina)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -443,5 +477,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn id_jela;
         private System.Windows.Forms.DataGridViewTextBoxColumn naziv_jela;
         private System.Windows.Forms.DataGridViewTextBoxColumn cena_jela;
+        private System.Windows.Forms.NumericUpDown nud_kolicina;
+        private System.Windows.Forms.Label label3;
     }
 }

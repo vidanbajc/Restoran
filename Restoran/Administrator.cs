@@ -18,8 +18,8 @@ namespace Restoran
         public Administrator()
         {
             InitializeComponent();
-            Podaci.PopuniGrid(gridview_jela, "Jelo");
-            Podaci.PopuniGrid(gridview_prilozi, "Prilog");
+            gridview_jela.DataSource = Podaci.PopuniGrid("Jelo");
+            gridview_prilozi.DataSource = Podaci.PopuniGrid("Prilog");
         }
 
         private void btn_novo_jelo_prilog_Click(object sender, EventArgs e)
@@ -77,8 +77,8 @@ namespace Restoran
 
             gridview_jela.DataSource = null;
             gridview_prilozi.DataSource = null;
-            Podaci.PopuniGrid(gridview_jela, "Jelo");
-            Podaci.PopuniGrid(gridview_prilozi, "Prilog");
+            gridview_jela.DataSource = Podaci.PopuniGrid("Jelo");
+            gridview_prilozi.DataSource = Podaci.PopuniGrid("Prilog");
 
             konekcija.Close();
         }
@@ -162,8 +162,8 @@ namespace Restoran
 
             gridview_jela.DataSource = null;
             gridview_prilozi.DataSource = null;
-            Podaci.PopuniGrid(gridview_jela, "Jelo");
-            Podaci.PopuniGrid(gridview_prilozi, "Prilog");
+            gridview_jela.DataSource = Podaci.PopuniGrid("Jelo");
+            gridview_prilozi.DataSource = Podaci.PopuniGrid("Prilog");
 
             konekcija.Close();
         }
@@ -228,8 +228,8 @@ namespace Restoran
 
             gridview_jela.DataSource = null;
             gridview_prilozi.DataSource = null;
-            Podaci.PopuniGrid(gridview_jela, "Jelo");
-            Podaci.PopuniGrid(gridview_prilozi, "Prilog");
+            gridview_jela.DataSource = Podaci.PopuniGrid("Jelo");
+            gridview_prilozi.DataSource = Podaci.PopuniGrid("Prilog");
 
             konekcija.Close();
         }
@@ -276,9 +276,66 @@ namespace Restoran
 
             gridview_jela.DataSource = null;
             gridview_prilozi.DataSource = null;
-            Podaci.PopuniGrid(gridview_jela, "Jelo");
-            Podaci.PopuniGrid(gridview_prilozi, "Prilog");
+            gridview_jela.DataSource = Podaci.PopuniGrid("Jelo");
+            gridview_prilozi.DataSource = Podaci.PopuniGrid("Prilog");
 
+            konekcija.Close();
+        }
+
+        private void btn_izvestaj_Click(object sender, EventArgs e)
+        {
+            string ukupan_broj_racuna = $@"select count(*) from Racun";
+            string ukupna_cena_racuna = $@"select sum(ukupna_cena) from Racun";
+
+            string najprodavanija_jela = $@"select top 3 j.naziv 
+                                            from Jelo j left join Stavka_racuna sr 
+                                            on j.id_jelo = sr.id_jelo 
+                                            group by j.naziv 
+                                            order by count(sr.id_jelo) desc";
+
+            string najprodavaniji_prilozi = $@"select top 3 p.naziv 
+                                               from Prilog p left join Stavka_racuna sr 
+                                               on p.id_prilog = sr.id_prilog 
+                                               group by p.naziv 
+                                               order by count(sr.id_prilog) desc";
+
+            OleDbConnection konekcija = new OleDbConnection(putanja);
+            konekcija.Open();
+
+            int broj_racuna = 0;
+            double cena_racuna = 0;
+            List<string> jela = new List<string>();
+            List<string> prilozi = new List<string>();
+
+            using (OleDbCommand komanda_ukupan_broj_racuna = new OleDbCommand(ukupan_broj_racuna, konekcija))
+            {
+                broj_racuna = Convert.ToInt32(komanda_ukupan_broj_racuna.ExecuteScalar());
+            }
+
+            using (OleDbCommand komanda_ukupna_cena_racuna = new OleDbCommand(ukupna_cena_racuna, konekcija))
+            {
+                cena_racuna = Convert.ToDouble(komanda_ukupna_cena_racuna.ExecuteScalar());
+            }
+
+            using (OleDbCommand komanda_najprodavanija_jela = new OleDbCommand(najprodavanija_jela, konekcija))
+            using (OleDbDataReader dr = komanda_najprodavanija_jela.ExecuteReader())
+            {
+                while (dr.Read())
+                {
+                    jela.Add(dr.GetString(0));
+                }
+            }
+
+            using (OleDbCommand komanda_najprodavaniji_prilozi = new OleDbCommand(najprodavaniji_prilozi, konekcija))
+            using (OleDbDataReader dr = komanda_najprodavaniji_prilozi.ExecuteReader())
+            {
+                while (dr.Read())
+                {
+                    prilozi.Add(dr.GetString(0));
+                }
+            }
+
+            MessageBox.Show($"Ukupan broj racuna: {broj_racuna}\nUkupna zarada: {cena_racuna}\nNajprodavanija jela: {string.Join(", ", jela)}\nNajprodavaniji prilozi: {string.Join(", ", prilozi)}", "Izvestaj", MessageBoxButtons.OK);
             konekcija.Close();
         }
     }
